@@ -23,11 +23,6 @@ public class DefaultController {
      */
     private String info = null;
 
-    @GetMapping("qrcode")
-    public String qrcode() {
-        return "/qrcode";
-    }
-
     @GetMapping(value = "/qrimage")
     public ResponseEntity<byte[]> getQRImage() {
         log.info("当前生成二维码的内容为： " + info);
@@ -49,7 +44,7 @@ public class DefaultController {
         final HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.IMAGE_PNG);
 
-        return new ResponseEntity<byte[]>(qrcode, headers, HttpStatus.CREATED);
+        return new ResponseEntity<>(qrcode, headers, HttpStatus.CREATED);
     }
 
     @PostMapping("/process")
