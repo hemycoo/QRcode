@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,10 +32,11 @@ public class DefaultController {
 
     @GetMapping(value = "/qrimage")
     public ResponseEntity<byte[]> getQRImage() {
-        log.info("当前生成二维码的内容为： " + info);
-        if (null == info) {
+        if (StringUtils.isBlank(info)) {
+            log.info("当前生成二维码的内容为空 ");
             return null;
         }
+        log.info("当前生成二维码的内容为： " + info);
         byte[] qrcode = null;
         try {
             qrcode = QRCodeGenerator.createQRCode(info, 360, 360);
@@ -51,8 +54,12 @@ public class DefaultController {
         return new ResponseEntity<>(qrcode, headers, HttpStatus.CREATED);
     }
 
-    @PostMapping("/process")
-    public String submit(@RequestParam("msg") String msg) {
+    @PostMapping("/generate")
+    public String submit(@RequestParam("msg") String msg, Model model) {
+        if (StringUtils.isBlank(msg)) {
+            model.addAttribute("result", "输入内容为空，请重新输入");
+            return "contentInput";
+        }
         info = msg;
         return "qrcodeGenerate";
     }

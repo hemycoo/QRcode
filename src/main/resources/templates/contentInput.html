@@ -3,6 +3,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <script type="text/javascript" src="webjars/jquery/2.2.4/jquery.min.js"></script>
+    <title>二维码生成器</title>
 </head>
 <body>
 <div class="container">
@@ -11,11 +12,12 @@
     </div>
 </div>
 
-<form th:action="@{/process}" method="post">
+<form th:action="@{/generate}" method="post">
     <label>请输入内容:</label>
     </select><br><br>
     <textarea name="msg" rows="10" cols="100"></textarea><br><br>
     <input type="submit" value="提交">
 </form>
+<p th:text=${result}></p>
 </body>
 </html>
