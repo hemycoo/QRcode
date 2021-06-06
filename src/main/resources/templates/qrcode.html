@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="webjars/jquery/2.2.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="starter-template">
+        <h1>QrCodeImage</h1>
+    </div>
+</div>
+
+<form th:action="@{/process}" method="post">
+</select><br><br>
+    个人简介:<textarea name="msg" rows="10" cols="20"></textarea><br><br>
+    <input type="submit" value="提交">
+</form>
+
+
+<div class="container">
+    <img alt="qrcode" th:src="@{'/qrimage'}"/>
+    <footer>
+        <p>
+            © <a>ThinkingInGIS</a> 2019
+        </p>
+    </footer>
+</div>
+</body>
+</html>
