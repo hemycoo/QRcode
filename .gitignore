@@ -33,3 +33,4 @@ build/
 /.mvn/wrapper/*
 /mvnw
 /mvnw.cmd
+/logs/*
