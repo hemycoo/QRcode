@@ -7,13 +7,14 @@
 <body>
 <div class="container">
     <div class="starter-template">
-        <h1>QrCodeImage</h1>
+        <h1>二维码生成器</h1>
     </div>
 </div>
 
 <form th:action="@{/process}" method="post">
-</select><br><br>
-    个人简介:<textarea name="msg" rows="10" cols="20"></textarea><br><br>
+    <label>请输入内容:</label>
+    </select><br><br>
+    <textarea name="msg" rows="10" cols="100"></textarea><br><br>
     <input type="submit" value="提交">
 </form>
 
