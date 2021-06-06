@@ -23,6 +23,11 @@ public class DefaultController {
      */
     private String info = null;
 
+    @GetMapping("qrcode")
+    public String qrcode() {
+        return "contentInput";
+    }
+
     @GetMapping(value = "/qrimage")
     public ResponseEntity<byte[]> getQRImage() {
         log.info("当前生成二维码的内容为： " + info);
@@ -36,7 +41,6 @@ public class DefaultController {
             System.out.println("Could not generate QR Code, WriterException :: " + e.getMessage());
             e.printStackTrace();
         } catch (IOException e) {
-
             System.out.println("Could not generate QR Code, IOException :: " + e.getMessage());
         }
 
@@ -50,6 +54,6 @@ public class DefaultController {
     @PostMapping("/process")
     public String submit(@RequestParam("msg") String msg) {
         info = msg;
-        return "qrcode";
+        return "qrcodeGenerate";
     }
 }

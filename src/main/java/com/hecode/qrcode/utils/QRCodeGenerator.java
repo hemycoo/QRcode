@@ -17,20 +17,9 @@ import java.util.Hashtable;
 @Slf4j
 public class QRCodeGenerator {
 
-    public static byte[] getQRCodeImage(String text, int width, int height) throws WriterException, IOException {
-        QRCodeWriter qrCodeWriter = new QRCodeWriter();
-        BitMatrix bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, width, height);
-
-        ByteArrayOutputStream pngOutputStream = new ByteArrayOutputStream();
-        MatrixToImageWriter.writeToStream(bitMatrix, "PNG", pngOutputStream);
-        byte[] pngData = pngOutputStream.toByteArray();
-        return pngData;
-    }
-
     public static byte[] createQRCode(String text, int width, int height) throws WriterException, IOException {
-
         MultiFormatWriter writer = new MultiFormatWriter();
-        log.info("TAG", "createQRCode: width=" + width + "  height=" + height);
+        log.info("createQRCode: width=" + width + "  height=" + height);
         //使用hints解决中文乱码问题
         Hashtable<EncodeHintType, String> hints = new Hashtable<>();
         hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
