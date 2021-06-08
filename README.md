@@ -7,4 +7,6 @@
 第四步 浏览器访问 http://localhost:8081/qrcode  
 第五步 关闭此程序，双击QR_Stop.bat
 
-接下来的工作:生成一个二维码图片
+接下来的工作:  
+去除依赖JDK，使用Spring native  
+生成一个二维码图片
