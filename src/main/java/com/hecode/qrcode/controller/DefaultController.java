@@ -3,6 +3,7 @@ package com.hecode.qrcode.controller;
 import com.google.zxing.WriterException;
 import com.hecode.qrcode.utils.QRCodeGenerator;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,6 +26,10 @@ public class DefaultController {
      */
     private String info = null;
 
+    @Value("${qr.picture.length:360}")
+    private int QRPictureLength;
+
+
     @GetMapping("qrcode")
     public String qrcode() {
         return "contentInput";
@@ -39,7 +44,7 @@ public class DefaultController {
         log.info("当前生成二维码的内容为： " + info);
         byte[] qrcode = null;
         try {
-            qrcode = QRCodeGenerator.createQRCode(info, 360, 360);
+            qrcode = QRCodeGenerator.createQRCode(info, QRPictureLength, QRPictureLength);
         } catch (WriterException e) {
             System.out.println("Could not generate QR Code, WriterException :: " + e.getMessage());
             e.printStackTrace();
