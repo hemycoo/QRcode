@@ -66,7 +66,6 @@ public class DefaultController {
             return "contentInput";
         }
         info = msg;
-
         return "qrcodeGenerate";
     }
 }
