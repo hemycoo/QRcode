@@ -43,7 +43,7 @@ jobs:
       - name: Deploy JAR and libs to Alibaba Cloud
         uses: horochx/deploy-via-scp@master
         with:
-          local: './target/*.jar lib/*.jar'                                                  # Local file path - REQUIRED false - DEFAULT ./
+          local: './target/*.jar ./lib/*.jar'                                                  # Local file path - REQUIRED false - DEFAULT ./
           remote: '~/app'
           host: ${{ secrets.SERVER_IP }}
           user: github-a
