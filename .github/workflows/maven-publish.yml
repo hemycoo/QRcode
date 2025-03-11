@@ -41,11 +41,14 @@ jobs:
 
 
       - name: Deploy JAR and libs to Alibaba Cloud
-        uses: appleboy/scp-action@master
+        uses: appleboy/ssh-action@v1.2.2
         with:
           host: ${{ secrets.SERVER_IP }}
           username: github-a
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SERVER_PORT }}
-          source: "target/*.jar target/lib/*"
-          target: "/home/github-a/app"
+          script: |
+            cp target/*.jar /home/github-a/app   |
+            cp lib/*.jar /home/github-a/app   |
+            echo "hello world" |
+            whoami
