@@ -17,4 +17,5 @@ jobs:
     steps:
     - name: connect server hemycoo8888
       run:
+        echo ${{ secrets.KEY }}
         telnet 114.96.93.215 22
