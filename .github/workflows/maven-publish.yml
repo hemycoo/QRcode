@@ -17,4 +17,4 @@ jobs:
     steps:
     - name: connect server hemycoo8888
       run:
-        ssh nexis@hemycoo8979.me
+        telnet hemycoo8979.me 22
