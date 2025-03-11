@@ -28,7 +28,7 @@ jobs:
         run: mvn clean package -DskipTests
 
       - name: Deploy JAR and libs to Alibaba Cloud
-        uses: appleboy/scp-action@master
+        uses: nogsantos/scp-deploy@master
         with:
           host: ${{ secrets.SERVER_IP }}
           username: github-a
