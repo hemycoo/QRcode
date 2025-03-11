@@ -14,5 +14,9 @@ jobs:
 
     steps:
     - name: connect server hemycoo8888
-      run: sshpass -p "Q@wHt.0311" ssh nexis@hemycoo8979.me" echo 'hemycoo8888'"
-
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ HOST }}
+        username: ${{ USERNAME }}
+        key: ${{ SSH_PRIVATE_KEY }}
+        port: ${{ PORT }}
