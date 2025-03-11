@@ -41,14 +41,13 @@ jobs:
 
 
       - name: Deploy JAR and libs to Alibaba Cloud
-        uses: appleboy/ssh-action@v1.2.2
+        uses: mdallasanta/ssh-scp-deploy@v1.2.0
         with:
+          local: './target/*.jar lib/*.jar'                                                  # Local file path - REQUIRED false - DEFAULT ./
+          remote: '~/app'
           host: ${{ secrets.SERVER_IP }}
           username: github-a
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SERVER_PORT }}
-          script: |
-            cp target/*.jar /home/github-a/app   |
-            cp lib/*.jar /home/github-a/app   |
-            echo "hello world" |
-            whoami
+          ssh_options: -o StrictHostKeyChecking=no
+          scp_options: -v
