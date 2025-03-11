@@ -41,13 +41,11 @@ jobs:
 
 
       - name: Deploy JAR and libs to Alibaba Cloud
-        uses: mdallasanta/ssh-scp-deploy@v1.2.0
+        uses: horochx/deploy-via-scp@master
         with:
           local: './target/*.jar lib/*.jar'                                                  # Local file path - REQUIRED false - DEFAULT ./
           remote: '~/app'
           host: ${{ secrets.SERVER_IP }}
-          username: github-a
+          user: github-a
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SERVER_PORT }}
-          ssh_options: -o StrictHostKeyChecking=no
-          scp_options: -v
