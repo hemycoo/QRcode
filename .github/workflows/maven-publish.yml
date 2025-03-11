@@ -36,7 +36,8 @@ jobs:
           port: ${{ secrets.SERVER_PORT }}
           script: |
             pwd   |
-            echo "hello world"
+            echo "hello world" |
+            whoami
 
 
       - name: Deploy JAR and libs to Alibaba Cloud
