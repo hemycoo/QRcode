@@ -31,7 +31,7 @@ jobs:
         uses: appleboy/ssh-action@v1.2.2
         with:
           host: ${{ secrets.SERVER_IP }}
-          username: github-a
+          username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
@@ -43,9 +43,19 @@ jobs:
       - name: Deploy JAR and libs to Alibaba Cloud
         uses: horochx/deploy-via-scp@master
         with:
-          local: './target/*.jar ./lib/*.jar'                                                  # Local file path - REQUIRED false - DEFAULT ./
+          local: './target/*.jar'                                                  # Local file path - REQUIRED false - DEFAULT ./
           remote: '~/app'
           host: ${{ secrets.SERVER_IP }}
-          user: github-a
+          user: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SERVER_PORT }}
+
+      - name: Deploy JAR and libs to Alibaba Cloud
+        uses: horochx/deploy-via-scp@master
+        with:
+          local: './lib/*.jar'                                                  # Local file path - REQUIRED false - DEFAULT ./
+          remote: '~/app'
+          host: ${{ secrets.SERVER_IP }}
+          user: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SERVER_PORT }}
