@@ -17,4 +17,4 @@ jobs:
     steps:
     - name: connect server hemycoo8888
       run:
-        telnet hemycoo8979.me 22
+        telnet 114.96.93.215 22
