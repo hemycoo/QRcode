@@ -3,6 +3,8 @@
 
 name: Maven Package
 
+
+
 on:
   push:
     branches:
@@ -14,9 +16,5 @@ jobs:
 
     steps:
     - name: connect server hemycoo8888
-      uses: appleboy/ssh-action@v1.0.3
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        port: ${{ secrets.PORT }}
+      run:
+        ssh nexis@hemycoo8979.me
