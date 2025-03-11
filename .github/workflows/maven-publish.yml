@@ -16,6 +16,11 @@ jobs:
 
     steps:
     - name: connect server hemycoo8888
+      uses: appleboy/ssh-action@v1.2.2
       run:
-        echo ${{ secrets.KEY }}
-        telnet 114.96.93.215 22
+        host: ${{ secrets.SERVER_IP }}
+        username: ${{ secrets.SERVER_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: ${{ secrets.SERVER_PORT }}
+        script: |
+          pwd
