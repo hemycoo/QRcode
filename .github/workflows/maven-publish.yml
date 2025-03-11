@@ -31,8 +31,8 @@ jobs:
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.SERVER_IP }}
-          username: ${{ secrets.SERVER_USERNAME }}
-          password: ${{ secrets.SERVER_PASSWORD }}
+          username: github-a
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           source: "target/*.jar target/lib/*"
           target: "/home/github-a/app"
