@@ -16,7 +16,7 @@ jobs:
     - name: connect server hemycoo8888
       uses: appleboy/ssh-action@v1.0.3
       with:
-        host: ${{ HOST }}
-        username: ${{ USERNAME }}
-        key: ${{ SSH_PRIVATE_KEY }}
-        port: ${{ PORT }}
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: ${{ secrets.PORT }}
