@@ -27,16 +27,6 @@ jobs:
       - name: Build with Maven
         run: mvn clean package -DskipTests
 
-      - name: Deploy JAR and libs to Alibaba Cloud
-        uses: nogsantos/scp-deploy@master
-        with:
-          host: ${{ secrets.SERVER_IP }}
-          username: github-a
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.SERVER_PORT }}
-          source: "target/*.jar target/lib/*"
-          target: "/home/github-a/app"
-
       - name: connect server hemycoo8888
         uses: appleboy/ssh-action@v1.2.2
         with:
@@ -47,3 +37,14 @@ jobs:
           script: |
             pwd   |
             echo "hello world"
+
+
+      - name: Deploy JAR and libs to Alibaba Cloud
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: github-a
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SERVER_PORT }}
+          source: "target/*.jar target/lib/*"
+          target: "/home/github-a/app"
