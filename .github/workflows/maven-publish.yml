@@ -50,10 +50,10 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SERVER_PORT }}
 
-      - name: Deploy JAR and libs to Alibaba Cloud
+      - name: 传输libs
         uses: horochx/deploy-via-scp@master
         with:
-          local: './lib/*.jar'                                                  # Local file path - REQUIRED false - DEFAULT ./
+          local: './target/lib/*.jar'                                                  # Local file path - REQUIRED false - DEFAULT ./
           remote: '~/app/lib'
           host: ${{ secrets.SERVER_IP }}
           user: ${{ secrets.SERVER_USERNAME }}
