@@ -54,7 +54,7 @@ jobs:
         uses: horochx/deploy-via-scp@master
         with:
           local: './lib/*.jar'                                                  # Local file path - REQUIRED false - DEFAULT ./
-          remote: '~/app'
+          remote: '~/app/lib'
           host: ${{ secrets.SERVER_IP }}
           user: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
