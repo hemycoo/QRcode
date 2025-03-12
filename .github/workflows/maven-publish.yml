@@ -70,7 +70,7 @@ jobs:
           script: |
             pwd   
             echo "hello world" 
-            ps -ef | grep java 
+#            ps -ef | grep java
             pkill -f "QRcode-0.0.1.jar" || true
             echo "停止完成"
 
