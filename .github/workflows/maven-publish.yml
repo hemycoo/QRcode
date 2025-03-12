@@ -82,9 +82,9 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
-            pwd   |
-            echo "hello world" |
+            pwd   
+            echo "hello world" 
             cd ~/app |
-            nohup java -jar QRcode-0.0.1.jar & |
-            ps -ef | grep QRcode-0.0.1.jar |
+            nohup java -jar QRcode-0.0.1.jar & 
+            ps -ef | grep QRcode-0.0.1.jar 
             echo "启动完成"
