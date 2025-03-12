@@ -70,7 +70,7 @@ jobs:
           script: |
             pwd
             echo "hello world"
-            pkill -f "QRcode-0.0.1.jar" || true
+            pkill -f "QRcode-0.0.1.jar"
             echo "停止完成"
 
       - name: 启动工程
