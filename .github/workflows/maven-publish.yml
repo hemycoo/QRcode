@@ -4,11 +4,13 @@
 name: Maven Package
 
 
-
+# 请求合并到release后部署
 on:
-  push:
+  pull_request:
     branches:
-      - master
+      - release
+    types:
+      - closed
 
 jobs:
   build-and-deploy:
