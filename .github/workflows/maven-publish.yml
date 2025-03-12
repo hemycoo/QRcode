@@ -71,7 +71,7 @@ jobs:
             pwd   |
             echo "hello world" |
             ps -ef | grep java |
-            kill -9 QRcode-0.0.1.jar |
+            pkill -9 QRcode-0.0.1.jar |
             echo "停止完成"
 
       - name: 启动工程
