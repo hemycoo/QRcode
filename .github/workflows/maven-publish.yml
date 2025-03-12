@@ -40,7 +40,7 @@ jobs:
             whoami
 
 
-      - name: Deploy JAR and libs to Alibaba Cloud
+      - name: Deploy JAR
         uses: horochx/deploy-via-scp@master
         with:
           local: './target/*.jar'                                                  # Local file path - REQUIRED false - DEFAULT ./
@@ -59,3 +59,32 @@ jobs:
           user: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SERVER_PORT }}
+
+      - name: 停止工程
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SERVER_PORT }}
+          script: |
+            pwd   |
+            echo "hello world" |
+            ps -ef | grep java |
+            kill -9 QRcode-0.0.1.jar |
+            echo "停止完成"
+
+      - name: 启动工程
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SERVER_PORT }}
+          script: |
+            pwd   |
+            echo "hello world" |
+            cd ~/app |
+            nohup java -jar QRcode-0.0.1.jar & |
+            ps -ef | grep QRcode-0.0.1.jar |
+            echo "启动完成"
